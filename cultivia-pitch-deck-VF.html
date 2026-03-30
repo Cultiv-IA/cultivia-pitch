@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CultivIA — Pitch Deck 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-selva: #1a3a2a;
+    --verde-profundo: #0d2118;
+    --verde-medio: #2d5c3f;
+    --verde-lima: #7eb829;
+    --lima-bright: #a8d940;
+    --tierra: #c4874a;
+    --tierra-claro: #e8b07a;
+    --crema: #f5f0e8;
+    --crema-oscuro: #e8e0d0;
+    --blanco: #fafaf7;
+    --texto-oscuro: #0d2118;
+    --texto-medio: #3a5c47;
+    --acento-oro: #d4a843;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--verde-profundo);
+    color: var(--crema);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background: rgba(13,33,24,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(126,184,41,0.15);
+  }
+
+  .nav-logo { display: flex; align-items: center; }
+
+  .slide-counter {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(245,240,232,0.4);
+    letter-spacing: 0.1em;
+  }
+
+  .nav-dots {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .nav-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(126,184,41,0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+  }
+
+  .nav-dot.active {
+    background: var(--lima-bright);
+    width: 20px;
+    border-radius: 3px;
+  }
+
+  /* SLIDES CONTAINER */
+  .slides-wrapper {
+    width: 100%;
+  }
+
+  /* SLIDE BASE */
+  .slide {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 7rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .slide.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* BACKGROUNDS POR SECCIÓN */
+  .slide-cover {
+    background: var(--verde-profundo);
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-dark { background: var(--verde-profundo); }
+  .slide-forest { background: var(--verde-selva); }
+  .slide-mid { background: var(--verde-medio); }
+  .slide-light {
+    background: var(--crema);
+    color: var(--texto-oscuro);
+  }
+  .slide-tierra {
+    background: #2a1f0f;
+    color: var(--crema);
+  }
+
+  /* DECORATIVE ELEMENTS */
+  .bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(126,184,41,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(126,184,41,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--lima-bright);
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+  }
+
+  .section-label.dark { color: var(--verde-medio); }
+
+  /* TYPOGRAPHY */
+  h1.display {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  h2.slide-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  h3.sub-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 2rem;
+    opacity: 0.85;
+  }
+
+  .body-text {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 680px;
+  }
+
+  .highlight { color: var(--lima-bright); }
+  .highlight-tierra { color: var(--tierra-claro); }
+  .highlight-oro { color: var(--acento-oro); }
+
+  /* COVER SLIDE */
+  .cover-logo { margin-bottom: 0.5rem; }
+
+  .cover-tagline {
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 300;
+    color: rgba(245,240,232,0.6);
+    letter-spacing: 0.05em;
+    margin-bottom: 3rem;
+  }
+
+  .cover-products {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+  }
+
+  .product-tag {
+    padding: 0.5rem 1.2rem;
+    border: 1px solid rgba(126,184,41,0.4);
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--lima-bright);
+    background: rgba(126,184,41,0.08);
+  }
+
+  .product-tag.tierra {
+    border-color: rgba(196,135,74,0.4);
+    color: var(--tierra-claro);
+    background: rgba(196,135,74,0.08);
+  }
+
+  .cover-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(245,240,232,0.3);
+    letter-spacing: 0.15em;
+  }
+
+  /* DECORATIVE LEAF */
+  .leaf-deco {
+    position: absolute;
+    font-size: 20rem;
+    opacity: 0.03;
+    pointer-events: none;
+    line-height: 1;
+    user-select: none;
+  }
+
+  /* CARDS */
+  .cards-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .cards-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .cards-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+  .card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(126,184,41,0.15);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card:hover {
+    background: rgba(126,184,41,0.08);
+    border-color: rgba(126,184,41,0.4);
+    transform: translateY(-4px);
+  }
+
+  .card.light {
+    background: rgba(255,255,255,0.7);
+    border-color: rgba(45,92,63,0.15);
+    color: var(--texto-oscuro);
+  }
+
+  .card.light:hover {
+    background: rgba(255,255,255,0.9);
+    border-color: var(--verde-lima);
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-body {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    opacity: 0.8;
+    font-weight: 300;
+  }
+
+  /* BRAND ARCHITECTURE */
+  .brand-tree {
+    margin-top: 2.5rem;
+    position: relative;
+  }
+
+  .brand-root {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .brand-box {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border-radius: 12px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    position: relative;
+  }
+
+  .brand-box.root {
+    background: var(--lima-bright);
+    color: var(--verde-profundo);
+    font-size: 1.8rem;
+  }
+
+  .brand-branches {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  .brand-branches::before {
+    content: '';
+    position: absolute;
+    top: -1.5rem;
+    left: 16.5%;
+    right: 16.5%;
+    height: 1px;
+    background: rgba(126,184,41,0.4);
+  }
+
+  .branch-box {
+    background: rgba(126,184,41,0.1);
+    border: 1px solid rgba(126,184,41,0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .branch-box::before {
+    content: '';
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    width: 1px;
+    height: 1.5rem;
+    background: rgba(126,184,41,0.4);
+  }
+
+  .branch-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--lima-bright);
+    margin-bottom: 0.4rem;
+  }
+
+  .branch-desc {
+    font-size: 0.8rem;
+    opacity: 0.65;
+    line-height: 1.4;
+  }
+
+  /* INSIGHT BOX */
+  .insight-box {
+    background: linear-gradient(135deg, rgba(126,184,41,0.12), rgba(126,184,41,0.04));
+    border: 1px solid rgba(126,184,41,0.3);
+    border-left: 4px solid var(--lima-bright);
+    border-radius: 0 12px 12px 0;
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .insight-box.tierra {
+    background: linear-gradient(135deg, rgba(196,135,74,0.12), rgba(196,135,74,0.04));
+    border-color: rgba(196,135,74,0.3);
+    border-left-color: var(--tierra-claro);
+  }
+
+  /* STAT BLOCKS */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+
+  .stat-block {
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(126,184,41,0.15);
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--lima-bright);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    line-height: 1.3;
+  }
+
+  /* PRICING TABLE */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .pricing-card {
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(126,184,41,0.2);
+    background: rgba(255,255,255,0.04);
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  .pricing-card:hover { transform: translateY(-6px); }
+
+  .pricing-card.featured {
+    background: var(--lima-bright);
+    color: var(--verde-profundo);
+    border-color: var(--lima-bright);
+  }
+
+  .pricing-card.featured .pricing-price { color: var(--verde-profundo); }
+  .pricing-card.featured .pricing-feature { color: rgba(13,33,24,0.75); }
+
+  .pricing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--tierra);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    white-space: nowrap;
+  }
+
+  .pricing-tier {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .pricing-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--lima-bright);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .pricing-period {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-features { list-style: none; text-align: left; }
+
+  .pricing-feature {
+    font-size: 0.85rem;
+    padding: 0.4rem 0;
+    opacity: 0.75;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .pricing-feature::before { content: '✓'; color: var(--lima-bright); font-weight: 700; flex-shrink: 0; }
+  .pricing-card.featured .pricing-feature::before { color: var(--verde-profundo); }
+
+  /* PROJECTION TABLE */
+  .proj-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+  }
+
+  .proj-table th {
+    background: rgba(126,184,41,0.15);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: var(--lima-bright);
+    border-bottom: 1px solid rgba(126,184,41,0.2);
+  }
+
+  .proj-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-weight: 300;
+  }
+
+  .proj-table tr:hover td { background: rgba(126,184,41,0.04); }
+
+  .proj-table .total-row td {
+    font-weight: 600;
+    color: var(--lima-bright);
+    border-top: 1px solid rgba(126,184,41,0.3);
+    font-size: 1rem;
+  }
+
+  .scenario-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .scenario-tab {
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    border: 1px solid rgba(126,184,41,0.3);
+    background: transparent;
+    color: var(--crema);
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.3s;
+  }
+
+  .scenario-tab.active {
+    background: var(--lima-bright);
+    color: var(--verde-profundo);
+    border-color: var(--lima-bright);
+    font-weight: 600;
+  }
+
+  /* ROADMAP */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 2.5rem;
+    position: relative;
+  }
+
+  .roadmap::before {
+    content: '';
+    position: absolute;
+    top: 2rem;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--lima-bright), var(--tierra-claro));
+  }
+
+  .roadmap-phase {
+    padding: 1rem 1.5rem;
+    padding-top: 4rem;
+    position: relative;
+    text-align: center;
+  }
+
+  .roadmap-dot {
+    position: absolute;
+    top: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: 3px solid var(--lima-bright);
+    background: var(--verde-profundo);
+    z-index: 1;
+  }
+
+  .roadmap-phase:nth-child(2) .roadmap-dot { border-color: var(--acento-oro); }
+  .roadmap-phase:nth-child(3) .roadmap-dot {
+    border-color: var(--tierra-claro);
+    background: var(--tierra);
+  }
+
+  .roadmap-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--lima-bright);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .roadmap-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
+  .roadmap-items {
+    list-style: none;
+    font-size: 0.82rem;
+    line-height: 1.8;
+    opacity: 0.75;
+  }
+
+  /* MERCADITO TIERS */
+  .mercadito-tiers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .tier-card {
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(196,135,74,0.25);
+    background: rgba(196,135,74,0.06);
+    transition: all 0.3s;
+  }
+
+  .tier-card:hover { transform: translateY(-4px); background: rgba(196,135,74,0.12); }
+  .tier-card.featured-tier { border-color: var(--tierra-claro); background: rgba(196,135,74,0.15); }
+
+  .tier-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .tier-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--tierra-claro); }
+  .tier-price { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--crema); margin-bottom: 0.25rem; }
+  .tier-period { font-size: 0.75rem; opacity: 0.5; margin-bottom: 1rem; }
+  .tier-desc { font-size: 0.85rem; opacity: 0.7; line-height: 1.5; }
+
+  /* PROVIDER PITCH */
+  .provider-pitch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .commission-flow {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(126,184,41,0.2);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .flow-step:last-child { border-bottom: none; }
+
+  .flow-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--lima-bright);
+    color: var(--verde-profundo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .flow-text { font-size: 0.9rem; line-height: 1.5; opacity: 0.85; }
+
+  /* INVESTMENT SLIDE */
+  .investment-breakdown {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .invest-phase {
+    border-radius: 16px;
+    padding: 1.75rem;
+    border: 1px solid rgba(126,184,41,0.2);
+    background: rgba(255,255,255,0.04);
+  }
+
+  .invest-phase-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .invest-phase-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .invest-phase-amount {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--lima-bright);
+    text-align: right;
+  }
+
+  .invest-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    padding: 0.3rem 0;
+    opacity: 0.7;
+  }
+
+  .total-investment {
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    background: var(--lima-bright);
+    color: var(--verde-profundo);
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .total-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .total-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+  }
+
+  /* CTA SLIDE */
+  .cta-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+  }
+
+  .btn-primary {
+    padding: 1rem 2.5rem;
+    background: var(--lima-bright);
+    color: var(--verde-profundo);
+    border: none;
+    border-radius: 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+
+  .btn-primary:hover { background: var(--lima-bright); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(126,184,41,0.4); }
+
+  .btn-secondary {
+    padding: 1rem 2.5rem;
+    background: transparent;
+    color: var(--tierra-claro);
+    border: 1px solid var(--tierra-claro);
+    border-radius: 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+
+  .btn-secondary:hover { background: rgba(196,135,74,0.1); transform: translateY(-2px); }
+
+  /* DIVIDER */
+  .section-divider {
+    padding: 3rem 4rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: var(--verde-profundo);
+  }
+
+  .divider-line { flex: 1; height: 1px; background: rgba(126,184,41,0.2); }
+
+  .divider-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: rgba(126,184,41,0.5);
+    white-space: nowrap;
+  }
+
+  /* LAYOUT HELPERS */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .bullet-list { list-style: none; margin-top: 1.5rem; }
+
+  .bullet-list li {
+    padding: 0.6rem 0;
+    font-size: 0.95rem;
+    font-weight: 300;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    line-height: 1.5;
+  }
+
+  .bullet-list li::before {
+    content: '→';
+    color: var(--lima-bright);
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .bullet-list.dark li::before { color: var(--verde-medio); }
+  .bullet-list.dark li { border-color: rgba(0,0,0,0.1); color: var(--texto-oscuro); }
+
+  /* BIG QUOTE */
+  .big-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--crema);
+    border-left: 3px solid var(--lima-bright);
+    padding-left: 2rem;
+    margin: 2rem 0;
+    max-width: 700px;
+  }
+
+  /* PROVIDER LIST */
+  .provider-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .provider-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(126,184,41,0.15);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .provider-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--lima-bright);
+    flex-shrink: 0;
+  }
+
+  .provider-dot.alta { background: var(--lima-bright); }
+  .provider-dot.muy-alta { background: var(--acento-oro); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .slide { padding: 6rem 1.5rem 3rem; }
+    .two-col, .brand-branches, .roadmap, .mercadito-tiers, .investment-breakdown, .provider-pitch { grid-template-columns: 1fr; }
+    .roadmap::before { display: none; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-dots { display: none; }
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(126,184,41,0); }
+    50% { box-shadow: 0 0 30px 10px rgba(126,184,41,0.15); }
+  }
+
+  .cover-logo { animation: fadeUp 0.8s ease forwards; }
+  .cover-tagline { animation: fadeUp 0.8s 0.2s ease both; }
+  .cover-products { animation: fadeUp 0.8s 0.4s ease both; }
+
+  .scenario-content { display: none; }
+  .scenario-content.active { display: block; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><svg id="logo-nav" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 250 75.25" style="height:28px;width:auto;display:block;">
+  
+  <defs>
+    <style>
+      .st0 {
+        fill: #fff;
+      }
+
+      .st1 {
+        fill: #a8d940;
+      }
+
+      .st2 {
+        fill: #3a7d44;
+      }
+
+      .st3 {
+        fill: url(#linear-gradient);
+      }
+
+      .st4 {
+        fill: #c4874a;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="26.21" y1="58.8" x2="26.21" y2="16.46" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3a7d44"/>
+      <stop offset=".62" stop-color="#107f00"/>
+      <stop offset="1" stop-color="#a8d940"/>
+    </linearGradient>
+  </defs>
+  <circle class="st0" cx="26.21" cy="37.63" r="18.17"/>
+  <path class="st2" d="M83.27,28.93l-9.1,5.06c-1.2-1.73-3.13-2.89-5.54-2.89-4.19,0-6.94,3.37-6.94,7.51s2.75,7.52,6.94,7.52c2.41,0,4.34-1.16,5.54-2.89l9.1,5.06c-3.18,4.62-8.62,7.66-14.74,7.66-9.83,0-17.78-7.76-17.78-17.34s7.95-17.34,17.78-17.34c6.12,0,11.56,3.03,14.74,7.66Z"/>
+  <path class="st2" d="M112.94,31.39v24.09h-9.78v-2.36c-2.5,1.78-5.54,2.84-8.48,2.84-4.87,0-8.04-2.89-8.04-7.66v-16.91h9.78v13.92c0,1.73.96,2.75,2.79,2.75,1.25,0,2.65-.48,3.95-1.4v-15.27h9.78Z"/>
+  <path class="st2" d="M127.53,55.47h-9.78V21.75h9.78v33.72Z"/>
+  <path class="st2" d="M150.36,53.74c-2.65,1.45-5.25,2.22-8.19,2.22-4.58,0-8.43-2.55-8.43-8.43v-8.72h-2.84v-7.42h2.84v-6.02h9.78v6.02h5.44v7.42h-5.44v7.03c0,1.59,1.11,2.22,2.5,2.22,1.01,0,2.22-.39,3.13-.92l1.2,6.6Z"/>
+  <path class="st2" d="M164.09,25.56c0,2.36-2.31,4.24-5.11,4.24s-5.06-1.88-5.06-4.24,2.26-4.29,5.06-4.29,5.11,1.93,5.11,4.29ZM163.9,55.47h-9.78v-24.09h9.78v24.09Z"/>
+  <path class="st2" d="M195.84,31.39l-8.67,24.09h-12.14l-8.67-24.09h10.41l4.34,14.07,4.33-14.07h10.41Z"/>
+  <path class="st2" d="M206,51.62c0,2.46-2.31,4.38-5.15,4.38s-5.11-1.93-5.11-4.38,2.31-4.38,5.11-4.38,5.15,1.98,5.15,4.38Z"/>
+  <path class="st1" d="M29.93,42.52c-2.03,1.87-5,1.84-7.44.85-.19.46-.41.91-.57,1.38-.14.4-.25,1.1-.43,1.41-.39.69-1.42.31-1.32-.44.08-.54.42-1.4.62-1.93,1.21-3.2,3.18-5.97,5.74-8.23-2.69,1.3-4.88,3.62-6.1,6.36-.07.05-.35-.72-.37-.79-1.05-3.2.01-6.76,3.02-8.42,2.48-1.37,5.62-1.11,7.64-3.24.16-.17.4-.56.54-.68.12-.1.22-.09.3.06.15.29.29.82.38,1.15,1.24,4.22,1.48,9.32-2.01,12.53Z"/>
+  <path class="st3" d="M26.21,58.8c-11.67,0-21.17-9.5-21.17-21.17s9.5-21.17,21.17-21.17,21.17,9.5,21.17,21.17-9.5,21.17-21.17,21.17ZM26.21,19.46c-10.02,0-18.17,8.15-18.17,18.17s8.15,18.17,18.17,18.17,18.17-8.15,18.17-18.17-8.15-18.17-18.17-18.17Z"/>
+  <path class="st1" d="M213.91,57.51h-5.45V19.71h5.45v37.8Z"/>
+  <path class="st1" d="M238.02,48.39h-15.3l-2.98,9.13h-4.49l12.4-37.8h5.43l12.44,37.8h-4.49l-3.02-9.13ZM236.51,43.69l-6.12-18.63-6.12,18.63h12.24Z"/>
+  <path class="st4" d="M11.8,35.26c-.39,0-.78-.17-1.05-.5-.47-.58-.39-1.43.19-1.91l14.64-11.98c.51-.41,1.23-.41,1.73.01l14.19,11.98c.57.48.64,1.34.16,1.91-.48.57-1.34.64-1.91.16l-13.33-11.25-13.77,11.26c-.25.21-.56.31-.86.31Z"/>
+  <path class="st4" d="M36.64,51.68H15.79c-.75,0-1.36-.77-1.36-1.72v-13.54c0-.95.61-1.72,1.36-1.72s1.36.77,1.36,1.72v11.81h18.14v-11.81c0-.95.61-1.72,1.36-1.72s1.36.77,1.36,1.72v13.54c0,.95-.61,1.72-1.36,1.72Z"/>
+</svg></div>
+  <div class="nav-dots" id="navDots"></div>
+  <div class="slide-counter" id="slideCounter">01 / 18</div>
+</nav>
+
+<!-- SLIDE 1: COVER -->
+<section class="slide slide-cover" id="slide-1">
+  <div class="bg-grid"></div>
+  <div class="bg-circle" style="width:600px;height:600px;background:radial-gradient(circle,rgba(126,184,41,0.08),transparent 70%);top:-200px;right:-200px;"></div>
+  <div class="bg-circle" style="width:400px;height:400px;background:radial-gradient(circle,rgba(196,135,74,0.06),transparent 70%);bottom:-100px;left:-100px;"></div>
+  <div class="leaf-deco" style="top:-50px;right:-50px;">🌿</div>
+
+  <div class="cover-logo" style="margin-bottom:1.5rem;"><svg id="logo-cover" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 250 75.25" style="height:clamp(60px,9vw,110px);width:auto;display:block;margin:0 auto;">
+  
+  <defs>
+    <style>
+      .st0 {
+        fill: #fff;
+      }
+
+      .st1 {
+        fill: #a8d940;
+      }
+
+      .st2 {
+        fill: #3a7d44;
+      }
+
+      .st3 {
+        fill: url(#linear-gradient);
+      }
+
+      .st4 {
+        fill: #c4874a;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="26.21" y1="58.8" x2="26.21" y2="16.46" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3a7d44"/>
+      <stop offset=".62" stop-color="#107f00"/>
+      <stop offset="1" stop-color="#a8d940"/>
+    </linearGradient>
+  </defs>
+  <circle class="st0" cx="26.21" cy="37.63" r="18.17"/>
+  <path class="st2" d="M83.27,28.93l-9.1,5.06c-1.2-1.73-3.13-2.89-5.54-2.89-4.19,0-6.94,3.37-6.94,7.51s2.75,7.52,6.94,7.52c2.41,0,4.34-1.16,5.54-2.89l9.1,5.06c-3.18,4.62-8.62,7.66-14.74,7.66-9.83,0-17.78-7.76-17.78-17.34s7.95-17.34,17.78-17.34c6.12,0,11.56,3.03,14.74,7.66Z"/>
+  <path class="st2" d="M112.94,31.39v24.09h-9.78v-2.36c-2.5,1.78-5.54,2.84-8.48,2.84-4.87,0-8.04-2.89-8.04-7.66v-16.91h9.78v13.92c0,1.73.96,2.75,2.79,2.75,1.25,0,2.65-.48,3.95-1.4v-15.27h9.78Z"/>
+  <path class="st2" d="M127.53,55.47h-9.78V21.75h9.78v33.72Z"/>
+  <path class="st2" d="M150.36,53.74c-2.65,1.45-5.25,2.22-8.19,2.22-4.58,0-8.43-2.55-8.43-8.43v-8.72h-2.84v-7.42h2.84v-6.02h9.78v6.02h5.44v7.42h-5.44v7.03c0,1.59,1.11,2.22,2.5,2.22,1.01,0,2.22-.39,3.13-.92l1.2,6.6Z"/>
+  <path class="st2" d="M164.09,25.56c0,2.36-2.31,4.24-5.11,4.24s-5.06-1.88-5.06-4.24,2.26-4.29,5.06-4.29,5.11,1.93,5.11,4.29ZM163.9,55.47h-9.78v-24.09h9.78v24.09Z"/>
+  <path class="st2" d="M195.84,31.39l-8.67,24.09h-12.14l-8.67-24.09h10.41l4.34,14.07,4.33-14.07h10.41Z"/>
+  <path class="st2" d="M206,51.62c0,2.46-2.31,4.38-5.15,4.38s-5.11-1.93-5.11-4.38,2.31-4.38,5.11-4.38,5.15,1.98,5.15,4.38Z"/>
+  <path class="st1" d="M29.93,42.52c-2.03,1.87-5,1.84-7.44.85-.19.46-.41.91-.57,1.38-.14.4-.25,1.1-.43,1.41-.39.69-1.42.31-1.32-.44.08-.54.42-1.4.62-1.93,1.21-3.2,3.18-5.97,5.74-8.23-2.69,1.3-4.88,3.62-6.1,6.36-.07.05-.35-.72-.37-.79-1.05-3.2.01-6.76,3.02-8.42,2.48-1.37,5.62-1.11,7.64-3.24.16-.17.4-.56.54-.68.12-.1.22-.09.3.06.15.29.29.82.38,1.15,1.24,4.22,1.48,9.32-2.01,12.53Z"/>
+  <path class="st3" d="M26.21,58.8c-11.67,0-21.17-9.5-21.17-21.17s9.5-21.17,21.17-21.17,21.17,9.5,21.17,21.17-9.5,21.17-21.17,21.17ZM26.21,19.46c-10.02,0-18.17,8.15-18.17,18.17s8.15,18.17,18.17,18.17,18.17-8.15,18.17-18.17-8.15-18.17-18.17-18.17Z"/>
+  <path class="st1" d="M213.91,57.51h-5.45V19.71h5.45v37.8Z"/>
+  <path class="st1" d="M238.02,48.39h-15.3l-2.98,9.13h-4.49l12.4-37.8h5.43l12.44,37.8h-4.49l-3.02-9.13ZM236.51,43.69l-6.12-18.63-6.12,18.63h12.24Z"/>
+  <path class="st4" d="M11.8,35.26c-.39,0-.78-.17-1.05-.5-.47-.58-.39-1.43.19-1.91l14.64-11.98c.51-.41,1.23-.41,1.73.01l14.19,11.98c.57.48.64,1.34.16,1.91-.48.57-1.34.64-1.91.16l-13.33-11.25-13.77,11.26c-.25.21-.56.31-.86.31Z"/>
+  <path class="st4" d="M36.64,51.68H15.79c-.75,0-1.36-.77-1.36-1.72v-13.54c0-.95.61-1.72,1.36-1.72s1.36.77,1.36,1.72v11.81h18.14v-11.81c0-.95.61-1.72,1.36-1.72s1.36.77,1.36,1.72v13.54c0,.95-.61,1.72-1.36,1.72Z"/>
+</svg></div>
+  <div class="cover-tagline">Del patio a tu mesa. Tecnología que siembra comunidad.</div>
+
+  <div class="cover-products">
+    <span class="product-tag">🌱 Bloom — App</span>
+    <span class="product-tag">🛒 CultivIA Store</span>
+    <span class="product-tag tierra">🏪 Mercadito CultivIA</span>
+  </div>
+
+  <div class="cover-meta">PITCH DECK · CANCÚN, Q. ROO · 2026</div>
+</section>
+
+<!-- DIVIDER -->
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-label">SECCIÓN 01 — LA HISTORIA</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- SLIDE 2: EL PROBLEMA -->
+<section class="slide slide-forest" id="slide-2">
+  <div class="bg-grid"></div>
+  <div class="section-label">02 — El Problema</div>
+  <h2 class="slide-title">La comida fresca<br><span class="highlight">está lejos de la mesa</span><br>de la mayoría.</h2>
+
+  <div class="two-col">
+    <div>
+      <ul class="bullet-list">
+        <li>Los productos frescos en supermercados de Cancún recorren cientos de kilómetros antes de llegar al anaquel — perdiendo frescura, nutrición y dinero en el camino.</li>
+        <li>La inflación alimentaria en México presiona el gasto familiar cada año, y las frutas y verduras frescas son de los primeros recortes.</li>
+        <li>La gente quiere cultivar en casa, pero no sabe por dónde empezar — y el clima tropical de QRoo parece un obstáculo, no una ventaja.</li>
+        <li>Los excedentes de quienes sí cultivan se desperdician: no hay canal accesible para venderlos o intercambiarlos.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="insight-box">
+        "¿Por qué no puedo simplemente plantar el limón de mi cocina?"
+        <br><br>
+        <small style="opacity:0.6">— La pregunta que nadie ha respondido con una herramienta accesible para el mexicano promedio.</small>
+      </div>
+      <div class="stats-row" style="grid-template-columns:1fr 1fr;margin-top:1.5rem;">
+        <div class="stat-block">
+          <div class="stat-number">180K</div>
+          <div class="stat-label">Hogares urbanos en la Riviera Maya como mercado inicial</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-number">0</div>
+          <div class="stat-label">Apps de cultivo casero adaptadas al clima tropical de QRoo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: EL INSIGHT -->
+<section class="slide slide-dark" id="slide-3">
+  <div class="bg-grid"></div>
+  <div class="section-label">03 — El Insight Clave</div>
+
+  <div class="big-quote">
+    "Probablemente ya tienes semillas en tu cocina sin saberlo."
+  </div>
+
+  <div class="body-text" style="margin-bottom:2rem;">
+    El limón de tu frutero. La mandarina de ayer. La cebolla que empezó a brotar sola. La zanahoria que ya tiene pelito verde.<br><br>
+    El mayor bloqueador del cultivo casero no es el espacio, ni el dinero, ni el clima. <strong class="highlight">Es la percepción de que se necesita algo especial para empezar.</strong>
+  </div>
+
+  <div class="cards-grid cards-3">
+    <div class="card">
+      <span class="card-icon">🍋</span>
+      <div class="card-title">Ya tienes las semillas</div>
+      <div class="card-body">Limones, mandarinas, jitomates, chiles, zanahorias, cebollas — todo lo que hay en tu cocina es un punto de partida.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🌡️</span>
+      <div class="card-title">El clima es tu aliado</div>
+      <div class="card-body">Quintana Roo tiene uno de los climas más generosos del mundo para el cultivo. Calor, humedad y sol son recursos, no obstáculos.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">📱</span>
+      <div class="card-title">Solo necesitas guía</div>
+      <div class="card-body">Con los pasos correctos, cualquier persona puede cosechar su propio alimento en 6–10 semanas desde cero.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: POR QUÉ CANCÚN / POR QUÉ AHORA -->
+<section class="slide slide-light" id="slide-4">
+  <div class="section-label dark">04 — Contexto & Oportunidad</div>
+  <h2 class="slide-title" style="color:var(--texto-oscuro);">El momento correcto.<br>El lugar <span style="color:var(--verde-lima);">exacto.</span></h2>
+
+  <div class="two-col">
+    <div>
+      <ul class="bullet-list dark">
+        <li>Cancún está en proceso de convertirse en un <strong>Distrito Financiero, Tecnológico y de Innovación</strong> — el ecosistema de startups más prometedor del sureste mexicano.</li>
+        <li>La conciencia por sustentabilidad y alimentación saludable crece aceleradamente en la Riviera Maya, impulsada por el turismo y la migración de profesionales.</li>
+        <li>La infraestructura de mercados locales tipo Farmers Market ya está validada en la zona: PDC, Puerto Aventuras y Tulum tienen modelos que funcionan — pero ninguno con respaldo tecnológico.</li>
+        <li>El modelo es replicable en cualquier zona tropical de LATAM: Yucatán, Tabasco, Veracruz, Centroamérica.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="insight-box tierra" style="color:var(--texto-oscuro);">
+        <strong>La ventana está abierta.</strong><br><br>
+        No existe ninguna app en español, adaptada al trópico mexicano, que combine guía de cultivo con IA + marketplace de insumos + comunidad de venta local. El espacio está vacío.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: LA OPORTUNIDAD -->
+<section class="slide slide-forest" id="slide-5">
+  <div class="bg-grid"></div>
+  <div class="section-label">05 — Tamaño del Mercado</div>
+  <h2 class="slide-title">Un mercado grande<br>con una entrada <span class="highlight">pequeña y clara.</span></h2>
+
+  <div class="stats-row">
+    <div class="stat-block">
+      <div class="stat-number">180K</div>
+      <div class="stat-label">Hogares urbanos target en Cancún + PDC + Tulum + Puerto Morelos</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number">3.5%</div>
+      <div class="stat-label">Meta de penetración a 36 meses = ~6,300 usuarios activos</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number">LATAM</div>
+      <div class="stat-label">Expansión natural a toda zona tropical hispanoparlante</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number">$0</div>
+      <div class="stat-label">Competencia directa adaptada al mercado hispanoparlante tropical</div>
+    </div>
+  </div>
+
+  <div class="body-text" style="margin-top:2rem;">
+    El modelo está diseñado para crecer desde adentro hacia afuera: cada usuario que cosecha se convierte en vendedor potencial del Mercadito, y cada vendedor trae nuevos usuarios. <span class="highlight">El producto crece solo cuando funciona.</span>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-label">SECCIÓN 02 — LA SOLUCIÓN</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- SLIDE 6: ARQUITECTURA DE MARCA -->
+<section class="slide slide-dark" id="slide-6">
+  <div class="bg-grid"></div>
+  <div class="section-label">06 — Arquitectura de Marca</div>
+  <h2 class="slide-title">Un ecosistema.<br><span class="highlight">Tres productos.</span></h2>
+
+  <div class="brand-tree">
+    <div class="brand-root">
+      <div class="brand-box root">CultivIA</div>
+      <div style="font-size:0.8rem;opacity:0.5;margin-top:0.5rem;font-family:'DM Mono',monospace;letter-spacing:0.1em;">EMPRESA / RAZÓN SOCIAL / MARCA PARAGUAS</div>
+    </div>
+    <div style="height:2rem;"></div>
+    <div class="brand-branches">
+      <div class="branch-box">
+        <div class="branch-name">🌱 Bloom</div>
+        <div class="branch-desc">App principal. Guía de cultivo casero con IA, tracker siembra→cosecha, mentoría personalizada.</div>
+      </div>
+      <div class="branch-box">
+        <div class="branch-name">🛒 CultivIA Store</div>
+        <div class="branch-desc">Marketplace integrado. Insumos, semillas, herramientas a comisión de proveedores locales y nacionales.</div>
+      </div>
+      <div class="branch-box" style="border-color:rgba(196,135,74,0.3);background:rgba(196,135,74,0.06);">
+        <div class="branch-name" style="color:var(--tierra-claro);">🏪 Mercadito CultivIA</div>
+        <div class="branch-desc">Espacio físico pop-up para venta de excedentes de cosecha por usuarios de Bloom.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: BLOOM LA APP -->
+<section class="slide slide-forest" id="slide-7">
+  <div class="bg-grid"></div>
+  <div class="section-label">07 — Bloom</div>
+  <h2 class="slide-title"><span class="highlight">Bloom</span> — Tu guía<br>de cultivo personal.</h2>
+
+  <div class="two-col">
+    <div>
+      <ul class="bullet-list">
+        <li><strong>Onboarding inteligente:</strong> ¿Cuánto espacio tienes? ¿Maceta, jardín o azotea? ¿Qué quieres cosechar? — y la pregunta clave: <em>"¿Ya tienes semillas en casa?"</em></li>
+        <li><strong>Catálogo QRoo-específico:</strong> 25–40 especies seleccionadas por viabilidad en el clima tropical de Quintana Roo.</li>
+        <li><strong>Plan personalizado con IA:</strong> Basado en tu perfil, Bloom te dice qué plantar, cuándo y cómo.</li>
+        <li><strong>Tracker siembra → cosecha:</strong> Registro de etapas con recordatorios inteligentes por etapa del cultivo.</li>
+        <li><strong>Tips de mentoría contextual:</strong> La IA te guía en cada etapa — sin chat libre, con consejos precisos cuando los necesitas.</li>
+        <li><strong>Enciclopedia tropical:</strong> Fichas detalladas por cultivo: riego, plagas, temporada, rendimiento esperado.</li>
+      </ul>
+    </div>
+    <div>
+      <!-- Mock de pantalla app -->
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(126,184,41,0.2);border-radius:24px;padding:1.5rem;max-width:280px;margin:0 auto;">
+        <div style="background:var(--lima-bright);border-radius:12px;padding:1rem;margin-bottom:1rem;color:var(--verde-profundo);">
+          <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;">🌱 Bloom</div>
+          <div style="font-size:0.75rem;opacity:0.7;margin-top:0.25rem;">Tu jardín de hoy</div>
+        </div>
+        <div style="font-size:0.8rem;opacity:0.6;margin-bottom:0.75rem;font-family:'DM Mono',monospace;">¿YA TIENES SEMILLAS?</div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+          <span style="background:rgba(126,184,41,0.15);border:1px solid rgba(126,184,41,0.3);padding:0.3rem 0.7rem;border-radius:1rem;font-size:0.75rem;">🍋 Limón</span>
+          <span style="background:rgba(126,184,41,0.15);border:1px solid rgba(126,184,41,0.3);padding:0.3rem 0.7rem;border-radius:1rem;font-size:0.75rem;">🌶️ Chile</span>
+          <span style="background:rgba(126,184,41,0.15);border:1px solid rgba(126,184,41,0.3);padding:0.3rem 0.7rem;border-radius:1rem;font-size:0.75rem;">🍅 Jitomate</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:1rem;font-size:0.8rem;">
+          <div style="color:var(--lima-bright);font-weight:600;margin-bottom:0.5rem;">Semana 3 — Jitomate</div>
+          <div style="opacity:0.7;line-height:1.5;">Hora de trasplantar. Tu plántula ya tiene 4 hojas. ¡Vas perfecto!</div>
+          <div style="margin-top:0.75rem;background:var(--lima-bright);color:var(--verde-profundo);padding:0.4rem 0.75rem;border-radius:0.5rem;font-size:0.75rem;font-weight:600;display:inline-block;">Ver instrucciones →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: CULTIVIA STORE -->
+<section class="slide slide-dark" id="slide-8">
+  <div class="bg-grid"></div>
+  <div class="section-label">08 — CultivIA Store</div>
+  <h2 class="slide-title">El insumo correcto,<br>en el <span class="highlight">momento exacto.</span></h2>
+
+  <div class="two-col">
+    <div>
+      <div class="body-text" style="margin-bottom:2rem;">
+        CultivIA Store no es un catálogo genérico. Aparece <strong>dentro del flujo de cultivo</strong> — cuando Bloom detecta que el usuario necesita sustrato, semillas o herramientas específicas, la tienda aparece con la recomendación correcta.
+      </div>
+
+      <div class="commission-flow">
+        <div style="font-family:'Playfair Display',serif;font-weight:700;margin-bottom:1rem;font-size:1rem;">Cómo funciona el modelo</div>
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-text">Bloom detecta que el usuario llega a la etapa de trasplante y necesita sustrato.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-text">La app sugiere el producto correcto del catálogo de CultivIA Store.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-text">Usuario compra — ya sea con contacto directo al proveedor o en línea.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-text">CultivIA cobra comisión al proveedor: 8% (primeros 120 días) → 12% en adelante.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="insight-box" style="margin-bottom:1.5rem;">
+        <strong>Sin inventario propio.</strong> Sin riesgo de stock. Sin logística. CultivIA conecta — el proveedor entrega.
+      </div>
+
+      <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:rgba(126,184,41,0.6);letter-spacing:0.1em;margin-bottom:1rem;">PROVEEDORES ANCLA IDENTIFICADOS</div>
+      <div class="provider-grid">
+        <div class="provider-item"><div class="provider-dot muy-alta"></div>Hidro Cultivos Del Mayab</div>
+        <div class="provider-item"><div class="provider-dot muy-alta"></div>Hidroponía Maya (Gob. QRoo)</div>
+        <div class="provider-item"><div class="provider-dot alta"></div>Vivero Las Palmas Cancún</div>
+        <div class="provider-item"><div class="provider-dot alta"></div>FERTICUN Insumos Agrícolas</div>
+        <div class="provider-item"><div class="provider-dot alta"></div>Fertiagricola de la Península</div>
+        <div class="provider-item"><div class="provider-dot alta"></div>APEC Manejo de Agua</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9: MERCADITO -->
+<section class="slide slide-tierra" id="slide-9">
+  <div class="bg-grid"></div>
+  <div class="section-label" style="color:var(--tierra-claro);">09 — Mercadito CultivIA</div>
+  <h2 class="slide-title">¿Te sobró algo?<br><span class="highlight-tierra">No lo desperdicies.</span></h2>
+
+  <div class="body-text" style="margin-bottom:2rem;">
+    El Mercadito transforma el excedente de cosecha en ingreso real para el usuario — y en comunidad viva para CultivIA. Arranca como pop-up itinerante, escala a formato semifijo según la tracción de Bloom.
+  </div>
+
+  <div class="mercadito-tiers">
+    <div class="tier-card">
+      <div class="tier-icon">📦</div>
+      <div class="tier-name">Huacal</div>
+      <div class="tier-price">$150</div>
+      <div class="tier-period">MXN / evento</div>
+      <div class="tier-desc">Espacio básico para 1–2 productos. Ideal para el primer vendedor novato con excedente pequeño.</div>
+    </div>
+    <div class="tier-card featured-tier">
+      <div class="tier-icon">🪴</div>
+      <div class="tier-name">Stand Medio</div>
+      <div class="tier-price">$750</div>
+      <div class="tier-period">MXN / evento</div>
+      <div class="tier-desc">5–6 huacales equivalentes. Para el usuario que ya lleva varios ciclos de cosecha y tiene variedad.</div>
+    </div>
+    <div class="tier-card">
+      <div class="tier-icon">🏪</div>
+      <div class="tier-name">Stand Completo</div>
+      <div class="tier-price">$2,000</div>
+      <div class="tier-period">MXN / evento</div>
+      <div class="tier-desc">15 huacales equivalentes. Para el granjero casero consolidado con producción regular y diversa.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10: FREEMIUM -->
+<section class="slide slide-forest" id="slide-10">
+  <div class="bg-grid"></div>
+  <div class="section-label">10 — Modelo Freemium</div>
+  <h2 class="slide-title">Gratis que <span class="highlight">realmente funciona.</span><br>Premium que vale la pena.</h2>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-tier">Free</div>
+      <div class="pricing-price">$0</div>
+      <div class="pricing-period">para siempre</div>
+      <ul class="pricing-features">
+        <li class="pricing-feature">Onboarding completo</li>
+        <li class="pricing-feature">Plan de cultivo personalizado</li>
+        <li class="pricing-feature">Tracker siembra → cosecha</li>
+        <li class="pricing-feature">Tips de mentoría IA por etapa</li>
+        <li class="pricing-feature">Enciclopedia básica (15 cultivos)</li>
+        <li class="pricing-feature">Acceso a CultivIA Store</li>
+        <li class="pricing-feature">Acceso al Mercadito</li>
+      </ul>
+    </div>
+    <div class="pricing-card featured">
+      <div class="pricing-badge">MÁS POPULAR</div>
+      <div class="pricing-tier">Premium Mensual</div>
+      <div class="pricing-price">$90</div>
+      <div class="pricing-period">MXN / mes · ~$8 USD</div>
+      <ul class="pricing-features">
+        <li class="pricing-feature">Todo lo de Free</li>
+        <li class="pricing-feature">Enciclopedia completa (40+ cultivos)</li>
+        <li class="pricing-feature">Diagnóstico avanzado de plagas</li>
+        <li class="pricing-feature">Planes de cultivo múltiples</li>
+        <li class="pricing-feature">Alertas climáticas personalizadas</li>
+        <li class="pricing-feature">Historial de cosechas ilimitado</li>
+      </ul>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-tier">Premium Anual</div>
+      <div class="pricing-price">$65</div>
+      <div class="pricing-period">MXN / mes · $780 MXN/año</div>
+      <ul class="pricing-features">
+        <li class="pricing-feature">Todo lo de Premium Mensual</li>
+        <li class="pricing-feature">Ahorro de $300 MXN al año</li>
+        <li class="pricing-feature">Prioridad en soporte</li>
+      </ul>
+    </div>
+    <div class="pricing-card" style="border-color:rgba(212,168,67,0.3);background:rgba(212,168,67,0.06);">
+      <div class="pricing-tier" style="color:var(--acento-oro);">Lifetime</div>
+      <div class="pricing-price" style="color:var(--acento-oro);">TBD</div>
+      <div class="pricing-period">pago único</div>
+      <ul class="pricing-features">
+        <li class="pricing-feature">Acceso completo para siempre</li>
+        <li class="pricing-feature">Todas las features futuras incluidas</li>
+        <li class="pricing-feature">Badge de fundador en el Mercadito</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-label">SECCIÓN 03 — EL NEGOCIO</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- SLIDE 11: MODELO DE INGRESOS -->
+<section class="slide slide-dark" id="slide-11">
+  <div class="bg-grid"></div>
+  <div class="section-label">11 — Modelo de Ingresos</div>
+  <h2 class="slide-title">Cuatro fuentes.<br><span class="highlight">Una sola plataforma.</span></h2>
+
+  <div class="cards-grid cards-2">
+    <div class="card">
+      <span class="card-icon">💳</span>
+      <div class="card-title">Suscripciones Premium</div>
+      <div class="card-body">$90 MXN/mes o $780 MXN/año. Conversión proyectada: 8% del total de usuarios en año 1, escalando a 18% en año 3. Ingreso predecible y recurrente.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🛒</span>
+      <div class="card-title">Comisiones CultivIA Store</div>
+      <div class="card-body">8% por venta referida en primeros 120 días → 12% en adelante. Sin inventario, sin logística. El ingreso más escalable del modelo.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🏪</span>
+      <div class="card-title">Renta Mercadito CultivIA</div>
+      <div class="card-body">$150–$2,000 MXN por espacio por evento. 2 eventos/mes, ~8 stands mixtos por evento. Genera comunidad física + contenido orgánico.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">📣</span>
+      <div class="card-title">Publicidad Contextual (v2)</div>
+      <div class="card-body">Proveedores patrocinados dentro de Bloom. Activable cuando la base de usuarios justifique el CPM. No en v1.0.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12: ROADMAP -->
+<section class="slide slide-forest" id="slide-12">
+  <div class="bg-grid"></div>
+  <div class="section-label">12 — Roadmap</div>
+  <h2 class="slide-title">36 meses.<br><span class="highlight">Un paso a la vez.</span></h2>
+
+  <div class="roadmap">
+    <div class="roadmap-phase">
+      <div class="roadmap-dot"></div>
+      <div class="roadmap-period">MES 1–6</div>
+      <div class="roadmap-title">Fase 1 — Bloom</div>
+      <ul class="roadmap-items">
+        <li>Desarrollo app PWA</li>
+        <li>Catálogo 25–40 cultivos QRoo</li>
+        <li>IA mentoría contextual</li>
+        <li>Beta con usuarios piloto</li>
+        <li>Onboarding proveedores Store</li>
+      </ul>
+    </div>
+    <div class="roadmap-phase">
+      <div class="roadmap-dot"></div>
+      <div class="roadmap-period">MES 6–12</div>
+      <div class="roadmap-title">Fase 2 — Mercadito</div>
+      <ul class="roadmap-items">
+        <li>Pop-up piloto primer evento</li>
+        <li>Meta: 200–500 usuarios activos</li>
+        <li>Activación CultivIA Store</li>
+        <li>Campaña redes sociales</li>
+        <li>Evaluación espacio semifijo</li>
+      </ul>
+    </div>
+    <div class="roadmap-phase">
+      <div class="roadmap-dot"></div>
+      <div class="roadmap-period">MES 12–36</div>
+      <div class="roadmap-title">Fase 3 — Expansión</div>
+      <ul class="roadmap-items">
+        <li>Mercadito formato semifijo</li>
+        <li>Expansión PDC, Tulum</li>
+        <li>App Store + Play Store</li>
+        <li>Publicidad contextual activa</li>
+        <li>Pitch expansión LATAM</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13: INVERSIÓN REQUERIDA -->
+<section class="slide slide-dark" id="slide-13">
+  <div class="bg-grid"></div>
+  <div class="section-label">13 — Inversión Requerida</div>
+  <h2 class="slide-title">Capital eficiente.<br><span class="highlight">Sin desperdiciar.</span></h2>
+
+  <div class="investment-breakdown">
+    <div class="invest-phase">
+      <div class="invest-phase-header">
+        <div class="invest-phase-name">🌱 Bloom v1.0</div>
+        <div class="invest-phase-amount">$50K–$172K MXN</div>
+      </div>
+      <div class="invest-line"><span>Desarrollo (IA + freelancer)</span><span>$27K–$82K MXN</span></div>
+      <div class="invest-line"><span>Diseño UI/UX + identidad</span><span>$9K–$30K MXN</span></div>
+      <div class="invest-line"><span>Catálogo de cultivos QRoo</span><span>$4K–$10K MXN</span></div>
+      <div class="invest-line"><span>Infraestructura primer año</span><span>$3K–$14K MXN</span></div>
+      <div class="invest-line"><span>IA (Claude API, 12 meses)</span><span>$7K–$24K MXN</span></div>
+    </div>
+    <div class="invest-phase">
+      <div class="invest-phase-header">
+        <div class="invest-phase-name">🏪 Mercadito Pop-up</div>
+        <div class="invest-phase-amount">$14.5K–$34K MXN</div>
+      </div>
+      <div class="invest-line"><span>Carpas y mesas (10–15 stands)</span><span>$8K–$18K MXN</span></div>
+      <div class="invest-line"><span>Señalética y branding físico</span><span>$3K–$7K MXN</span></div>
+      <div class="invest-line"><span>Permisos municipales</span><span>$1.5K–$4K MXN</span></div>
+      <div class="invest-line"><span>Renta espacio por evento</span><span>$2K–$5K MXN</span></div>
+    </div>
+    <div class="invest-phase">
+      <div class="invest-phase-header">
+        <div class="invest-phase-name">📣 Marketing arranque</div>
+        <div class="invest-phase-amount">$8K–$22K MXN</div>
+      </div>
+      <div class="invest-line"><span>Campañas Meta/TikTok Ads</span><span>$5K–$15K MXN</span></div>
+      <div class="invest-line"><span>Contenido y creativos</span><span>$2K–$5K MXN</span></div>
+      <div class="invest-line"><span>Dominio + herramientas</span><span>$1K–$2K MXN</span></div>
+    </div>
+    <div class="invest-phase">
+      <div class="invest-phase-header">
+        <div class="invest-phase-name">🔧 Buffer operativo</div>
+        <div class="invest-phase-amount">$10K–$30K MXN</div>
+      </div>
+      <div class="invest-line"><span>Imprevistos (15%)</span><span>$7K–$20K MXN</span></div>
+      <div class="invest-line"><span>Capital de trabajo mes 1–3</span><span>$3K–$10K MXN</span></div>
+    </div>
+  </div>
+
+  <div class="total-investment">
+    <div>
+      <div class="total-label">Inversión Total de Arranque</div>
+      <div style="font-size:0.85rem;opacity:0.65;margin-top:0.25rem;">Equivalente a lo que una agencia cobra solo por desarrollo</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="total-amount">~$83K–$258K MXN</div>
+      <div style="font-size:0.85rem;opacity:0.65;">~$4,100–$12,900 USD</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 14: PROYECCIONES -->
+<section class="slide slide-forest" id="slide-14">
+  <div class="bg-grid"></div>
+  <div class="section-label">14 — Proyección de Retorno</div>
+  <h2 class="slide-title">Tres escenarios.<br><span class="highlight">Todos positivos a 36 meses.</span></h2>
+
+  <div class="scenario-tabs">
+    <button class="scenario-tab active" onclick="showScenario('conservador', this)">Conservador</button>
+    <button class="scenario-tab" onclick="showScenario('base', this)">Base</button>
+    <button class="scenario-tab" onclick="showScenario('optimista', this)">Optimista</button>
+  </div>
+
+  <div class="scenario-content active" id="sc-conservador">
+    <table class="proj-table">
+      <thead>
+        <tr>
+          <th>Concepto</th>
+          <th>Año 1</th>
+          <th>Año 2</th>
+          <th>Año 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Usuarios activos</td><td>900</td><td>2,700</td><td>6,300</td></tr>
+        <tr><td>Usuarios premium (8%→12%→18%)</td><td>72</td><td>324</td><td>1,134</td></tr>
+        <tr><td>Ingresos suscripciones</td><td>$64,800 MXN</td><td>$291,600 MXN</td><td>$1,058,760 MXN</td></tr>
+        <tr><td>Ingresos comisión Store</td><td>$45,360 MXN</td><td>$204,120 MXN</td><td>$680,400 MXN</td></tr>
+        <tr><td>Ingresos Mercadito</td><td>$28,800 MXN</td><td>$57,600 MXN</td><td>$115,200 MXN</td></tr>
+        <tr class="total-row"><td>TOTAL ANUAL</td><td>$139,000 MXN</td><td>$553,320 MXN</td><td>$1,854,360 MXN</td></tr>
+        <tr class="total-row"><td>TOTAL USD (~20:1)</td><td>~$6,900 USD</td><td>~$27,600 USD</td><td>~$92,700 USD</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="scenario-content" id="sc-base">
+    <table class="proj-table">
+      <thead>
+        <tr>
+          <th>Concepto</th>
+          <th>Año 1</th>
+          <th>Año 2</th>
+          <th>Año 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Usuarios activos</td><td>1,400</td><td>4,200</td><td>9,800</td></tr>
+        <tr><td>Usuarios premium</td><td>140</td><td>588</td><td>1,960</td></tr>
+        <tr><td>Ingresos suscripciones</td><td>$126,000 MXN</td><td>$529,200 MXN</td><td>$1,764,000 MXN</td></tr>
+        <tr><td>Ingresos comisión Store</td><td>$70,560 MXN</td><td>$317,520 MXN</td><td>$1,058,400 MXN</td></tr>
+        <tr><td>Ingresos Mercadito</td><td>$57,600 MXN</td><td>$115,200 MXN</td><td>$230,400 MXN</td></tr>
+        <tr class="total-row"><td>TOTAL ANUAL</td><td>$254,160 MXN</td><td>$961,920 MXN</td><td>$3,052,800 MXN</td></tr>
+        <tr class="total-row"><td>TOTAL USD (~20:1)</td><td>~$12,700 USD</td><td>~$48,100 USD</td><td>~$152,600 USD</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="scenario-content" id="sc-optimista">
+    <table class="proj-table">
+      <thead>
+        <tr>
+          <th>Concepto</th>
+          <th>Año 1</th>
+          <th>Año 2</th>
+          <th>Año 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Usuarios activos</td><td>2,500</td><td>7,500</td><td>18,000</td></tr>
+        <tr><td>Usuarios premium</td><td>300</td><td>1,125</td><td>3,600</td></tr>
+        <tr><td>Ingresos suscripciones</td><td>$270,000 MXN</td><td>$1,012,500 MXN</td><td>$3,240,000 MXN</td></tr>
+        <tr><td>Ingresos comisión Store</td><td>$126,000 MXN</td><td>$567,000 MXN</td><td>$1,944,000 MXN</td></tr>
+        <tr><td>Ingresos Mercadito</td><td>$86,400 MXN</td><td>$172,800 MXN</td><td>$432,000 MXN</td></tr>
+        <tr class="total-row"><td>TOTAL ANUAL</td><td>$482,400 MXN</td><td>$1,752,300 MXN</td><td>$5,616,000 MXN</td></tr>
+        <tr class="total-row"><td>TOTAL USD (~20:1)</td><td>~$24,100 USD</td><td>~$87,600 USD</td><td>~$280,800 USD</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-label">SECCIÓN 04 — PITCH AL PROVEEDOR</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- SLIDE 15: POR QUÉ SER PROVEEDOR -->
+<section class="slide slide-light" id="slide-15">
+  <div class="section-label dark">15 — Para el Proveedor</div>
+  <h2 class="slide-title" style="color:var(--texto-oscuro);">Tus productos,<br>donde el cliente <span style="color:var(--verde-lima);">ya los necesita.</span></h2>
+
+  <div class="two-col">
+    <div>
+      <ul class="bullet-list dark">
+        <li><strong>Cero costo de entrada.</strong> No hay cuota de membresía, ni fee fijo. Solo pagas cuando vendemos juntos — modelo de comisión pura.</li>
+        <li><strong>El cliente llega listo para comprar.</strong> Bloom lo guía hasta el momento exacto en que necesita tu producto — no hay que convencerlo, ya está motivado.</li>
+        <li><strong>Tu marca visible dentro de la app.</strong> Logo, descripción y catálogo de tu negocio frente a miles de usuarios activos en la Riviera Maya.</li>
+        <li><strong>Acceso a un mercado que crece contigo.</strong> Cada nuevo usuario de Bloom es un cliente potencial tuyo. Cuanto más crece CultivIA, más vendes tú.</li>
+        <li><strong>Reporte mensual de ventas referidas.</strong> Transparencia total: sabes exactamente cuántas ventas llegaron desde la app.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="insight-box tierra" style="color:var(--texto-oscuro);">
+        <strong>La propuesta más simple del mundo:</strong><br><br>
+        Nosotros traemos al cliente con la necesidad ya creada. Tú das el producto. Compartimos el resultado. Sin riesgo, sin inversión, sin complicaciones.
+      </div>
+      <div class="stats-row" style="margin-top:1.5rem;">
+        <div class="stat-block" style="background:rgba(45,92,63,0.08);border-color:rgba(45,92,63,0.2);">
+          <div class="stat-number" style="color:var(--verde-medio);">8%</div>
+          <div class="stat-label" style="color:var(--texto-oscuro);">Comisión primeros 120 días</div>
+        </div>
+        <div class="stat-block" style="background:rgba(45,92,63,0.08);border-color:rgba(45,92,63,0.2);">
+          <div class="stat-number" style="color:var(--verde-medio);">12%</div>
+          <div class="stat-label" style="color:var(--texto-oscuro);">Comisión a partir del día 121</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 16: CÓMO FUNCIONA LA INTEGRACIÓN -->
+<section class="slide slide-dark" id="slide-16">
+  <div class="bg-grid"></div>
+  <div class="section-label">16 — Integración para Proveedores</div>
+  <h2 class="slide-title">Simple de integrar.<br><span class="highlight">Poderoso en resultados.</span></h2>
+
+  <div class="two-col">
+    <div class="commission-flow">
+      <div style="font-family:'Playfair Display',serif;font-weight:700;margin-bottom:1.5rem;font-size:1.1rem;">El flujo completo</div>
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div class="flow-text"><strong>Tú nos envías tu catálogo</strong> — nombre, foto, precio y descripción de tus productos. Nosotros lo subimos a CultivIA Store.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div class="flow-text"><strong>Bloom hace el trabajo:</strong> detecta qué necesita cada usuario en cada etapa de cultivo y recomienda tu producto en el momento correcto.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div class="flow-text"><strong>El cliente contacta o compra</strong> directamente — por WhatsApp, teléfono o tienda en línea según prefieras operar.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div class="flow-text"><strong>Reportes mensuales claros:</strong> cuántas referencias, cuántas ventas cerradas, comisión a pagar. Sin sorpresas.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">5</div>
+        <div class="flow-text"><strong>Comisión acordada:</strong> 8% los primeros 120 días como período de prueba, 12% en adelante una vez comprobada la tracción.</div>
+      </div>
+    </div>
+    <div>
+      <div class="insight-box" style="margin-bottom:2rem;">
+        <strong>Piloto de 120 días sin compromiso.</strong><br><br>
+        Propuesta para arrancar: 4 meses de prueba con comisión reducida. Si los números no convencen, cada quien sigue su camino sin costo.
+      </div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Lo que necesitamos de ti</div>
+      <ul class="bullet-list">
+        <li>Catálogo de productos con fotos y precios</li>
+        <li>Canal de contacto preferido (WhatsApp, web, teléfono)</li>
+        <li>Cobertura de entrega o pickup en Cancún/Riviera Maya</li>
+        <li>Tiempo de respuesta acordado al cliente referido</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 17: PROVEEDORES ANCLA -->
+<section class="slide slide-forest" id="slide-17">
+  <div class="bg-grid"></div>
+  <div class="section-label">17 — Ecosistema de Proveedores</div>
+  <h2 class="slide-title">Ya hicimos<br><span class="highlight">la tarea.</span></h2>
+
+  <div class="body-text" style="margin-bottom:2rem;">
+    No estamos construyendo desde cero. La red de proveedores locales en QRoo ya existe y está lista para conectarse. Estos son los socios prioritarios que buscamos integrar en la Fase 1:
+  </div>
+
+  <div class="cards-grid cards-2">
+    <div class="card">
+      <span class="card-icon">💧</span>
+      <div class="card-title">Hidroponía & Sistemas Alternativos</div>
+      <div class="card-body">Hidro Cultivos Del Mayab (Km 11.5 Cancún-PDC) · Hidroponía Maya S.A. de C.V. (Gobierno QRoo) — alianza institucional potencial de alto impacto.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🌿</span>
+      <div class="card-title">Viveros & Plantas</div>
+      <div class="card-body">Vivero Las Palmas Cancún (36+ años) · Vivero All Green · Vivero Espacios Verdes (30+ años) — catálogo amplio de plantas, macetas y sustratos.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🧪</span>
+      <div class="card-title">Fertilizantes & Insumos</div>
+      <div class="card-body">FERTICUN Insumos Agrícolas · Fertiagricola de la Península (20 años en el mercado) · Soluciones Agrícola Cancún — control de plagas, nutrientes y semillas.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🚿</span>
+      <div class="card-title">Riego & Herramientas</div>
+      <div class="card-body">APEC Manejo de Agua (Rain Bird, Hunter, goteo) · Verde In (integradores certificados Rain Bird) — sistemas ecoeficientes para huerto casero.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 18: CTA / CIERRE -->
+<section class="slide slide-cover" id="slide-18">
+  <div class="bg-grid"></div>
+  <div class="bg-circle" style="width:700px;height:700px;background:radial-gradient(circle,rgba(126,184,41,0.1),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+
+  <div class="cta-content">
+    <div class="section-label" style="text-align:center;">18 — Siguiente Paso</div>
+    <h2 class="slide-title" style="font-size:clamp(2.5rem,5vw,4.5rem);">
+      Todo mundo<br>puede cultivar.<br>
+      <span class="highlight">Ayúdanos a demostrarlo.</span>
+    </h2>
+
+    <div class="body-text" style="margin:2rem auto;text-align:center;opacity:0.75;">
+      CultivIA es una oportunidad de negocio real, medible y escalable — anclada en el momento más oportuno de la historia de Cancún como hub de innovación. La inversión es mínima. El potencial, sin techo.
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;max-width:500px;margin-left:auto;margin-right:auto;">
+      <div class="stat-block">
+        <div class="stat-number" style="font-size:1.5rem;">$4K</div>
+        <div class="stat-label">USD inversión mínima arranque</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number" style="font-size:1.5rem;">36</div>
+        <div class="stat-label">meses a breakeven garantizado</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number" style="font-size:1.5rem;">0</div>
+        <div class="stat-label">competidores directos hoy</div>
+      </div>
+    </div>
+
+    <div class="cta-buttons">
+      <a class="btn-primary" href="mailto:contacto@cultivia.app">Para Inversores → Agendar reunión</a>
+      <a class="btn-secondary" href="mailto:proveedores@cultivia.app">Para Proveedores → Unirme al piloto</a>
+    </div>
+
+    <div style="margin-top:3rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
+      <svg id="logo-footer" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 250 75.25" style="height:26px;width:auto;display:block;opacity:0.3;">
+  
+  <defs>
+    <style>
+      .st0 {
+        fill: #fff;
+      }
+
+      .st1 {
+        fill: #a8d940;
+      }
+
+      .st2 {
+        fill: #3a7d44;
+      }
+
+      .st3 {
+        fill: url(#linear-gradient);
+      }
+
+      .st4 {
+        fill: #c4874a;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="26.21" y1="58.8" x2="26.21" y2="16.46" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3a7d44"/>
+      <stop offset=".62" stop-color="#107f00"/>
+      <stop offset="1" stop-color="#a8d940"/>
+    </linearGradient>
+  </defs>
+  <circle class="st0" cx="26.21" cy="37.63" r="18.17"/>
+  <path class="st2" d="M83.27,28.93l-9.1,5.06c-1.2-1.73-3.13-2.89-5.54-2.89-4.19,0-6.94,3.37-6.94,7.51s2.75,7.52,6.94,7.52c2.41,0,4.34-1.16,5.54-2.89l9.1,5.06c-3.18,4.62-8.62,7.66-14.74,7.66-9.83,0-17.78-7.76-17.78-17.34s7.95-17.34,17.78-17.34c6.12,0,11.56,3.03,14.74,7.66Z"/>
+  <path class="st2" d="M112.94,31.39v24.09h-9.78v-2.36c-2.5,1.78-5.54,2.84-8.48,2.84-4.87,0-8.04-2.89-8.04-7.66v-16.91h9.78v13.92c0,1.73.96,2.75,2.79,2.75,1.25,0,2.65-.48,3.95-1.4v-15.27h9.78Z"/>
+  <path class="st2" d="M127.53,55.47h-9.78V21.75h9.78v33.72Z"/>
+  <path class="st2" d="M150.36,53.74c-2.65,1.45-5.25,2.22-8.19,2.22-4.58,0-8.43-2.55-8.43-8.43v-8.72h-2.84v-7.42h2.84v-6.02h9.78v6.02h5.44v7.42h-5.44v7.03c0,1.59,1.11,2.22,2.5,2.22,1.01,0,2.22-.39,3.13-.92l1.2,6.6Z"/>
+  <path class="st2" d="M164.09,25.56c0,2.36-2.31,4.24-5.11,4.24s-5.06-1.88-5.06-4.24,2.26-4.29,5.06-4.29,5.11,1.93,5.11,4.29ZM163.9,55.47h-9.78v-24.09h9.78v24.09Z"/>
+  <path class="st2" d="M195.84,31.39l-8.67,24.09h-12.14l-8.67-24.09h10.41l4.34,14.07,4.33-14.07h10.41Z"/>
+  <path class="st2" d="M206,51.62c0,2.46-2.31,4.38-5.15,4.38s-5.11-1.93-5.11-4.38,2.31-4.38,5.11-4.38,5.15,1.98,5.15,4.38Z"/>
+  <path class="st1" d="M29.93,42.52c-2.03,1.87-5,1.84-7.44.85-.19.46-.41.91-.57,1.38-.14.4-.25,1.1-.43,1.41-.39.69-1.42.31-1.32-.44.08-.54.42-1.4.62-1.93,1.21-3.2,3.18-5.97,5.74-8.23-2.69,1.3-4.88,3.62-6.1,6.36-.07.05-.35-.72-.37-.79-1.05-3.2.01-6.76,3.02-8.42,2.48-1.37,5.62-1.11,7.64-3.24.16-.17.4-.56.54-.68.12-.1.22-.09.3.06.15.29.29.82.38,1.15,1.24,4.22,1.48,9.32-2.01,12.53Z"/>
+  <path class="st3" d="M26.21,58.8c-11.67,0-21.17-9.5-21.17-21.17s9.5-21.17,21.17-21.17,21.17,9.5,21.17,21.17-9.5,21.17-21.17,21.17ZM26.21,19.46c-10.02,0-18.17,8.15-18.17,18.17s8.15,18.17,18.17,18.17,18.17-8.15,18.17-18.17-8.15-18.17-18.17-18.17Z"/>
+  <path class="st1" d="M213.91,57.51h-5.45V19.71h5.45v37.8Z"/>
+  <path class="st1" d="M238.02,48.39h-15.3l-2.98,9.13h-4.49l12.4-37.8h5.43l12.44,37.8h-4.49l-3.02-9.13ZM236.51,43.69l-6.12-18.63-6.12,18.63h12.24Z"/>
+  <path class="st4" d="M11.8,35.26c-.39,0-.78-.17-1.05-.5-.47-.58-.39-1.43.19-1.91l14.64-11.98c.51-.41,1.23-.41,1.73.01l14.19,11.98c.57.48.64,1.34.16,1.91-.48.57-1.34.64-1.91.16l-13.33-11.25-13.77,11.26c-.25.21-.56.31-.86.31Z"/>
+  <path class="st4" d="M36.64,51.68H15.79c-.75,0-1.36-.77-1.36-1.72v-13.54c0-.95.61-1.72,1.36-1.72s1.36.77,1.36,1.72v11.81h18.14v-11.81c0-.95.61-1.72,1.36-1.72s1.36.77,1.36,1.72v13.54c0,.95-.61,1.72-1.36,1.72Z"/>
+</svg>
+      <div style="font-family:'DM Mono',monospace;font-size:0.7rem;opacity:0.3;letter-spacing:0.1em;">cultivia.app · cancún, quintana roo · 2026</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // SLIDE TRACKING & NAV
+  const slides = document.querySelectorAll('.slide');
+  const navDots = document.getElementById('navDots');
+  const slideCounter = document.getElementById('slideCounter');
+  const totalSlides = slides.length;
+
+  // Create dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Ir al slide ${i + 1}`);
+    dot.onclick = () => slides[i].scrollIntoView({ behavior: 'smooth' });
+    navDots.appendChild(dot);
+  });
+
+  // Intersection Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        const idx = Array.from(slides).indexOf(entry.target);
+        document.querySelectorAll('.nav-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === idx);
+        });
+        slideCounter.textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(totalSlides).padStart(2, '0');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  slides.forEach(s => observer.observe(s));
+
+  // SCENARIO TABS
+  function showScenario(name, btn) {
+    document.querySelectorAll('.scenario-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.scenario-tab').forEach(el => el.classList.remove('active'));
+    document.getElementById('sc-' + name).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
