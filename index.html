@@ -931,6 +931,7 @@
   @media (max-width: 768px) {
     .slide { padding: 6rem 1.5rem 3rem; }
     .two-col, .brand-branches, .roadmap, .mercadito-tiers, .investment-breakdown, .provider-pitch { grid-template-columns: 1fr; }
+    .cards-2 { grid-template-columns: 1fr; }
     .roadmap::before { display: none; }
     nav { padding: 1rem 1.5rem; }
     .nav-dots { display: none; }
@@ -2048,7 +2049,7 @@
         slideCounter.textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(totalSlides).padStart(2, '0');
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.15 });
 
   slides.forEach(s => observer.observe(s));
 
