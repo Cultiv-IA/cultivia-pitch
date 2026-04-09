@@ -927,14 +927,107 @@
   .provider-dot.alta { background: var(--lima-bright); }
   .provider-dot.muy-alta { background: var(--acento-oro); }
 
-  /* RESPONSIVE */
+  /* RESPONSIVE — MOBILE FIRST */
+
+  /* Tablet portrait & small desktop (769–1024px) */
+  @media (max-width: 1024px) {
+    .slide { padding: 6rem 2.5rem 3.5rem; }
+    h2.slide-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); }
+    .cards-grid.cards-3 { grid-template-columns: repeat(2, 1fr); }
+    .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    .mercadito-tiers { grid-template-columns: repeat(2, 1fr); }
+    .brand-branches { grid-template-columns: repeat(3, 1fr); }
+    .proj-table { font-size: 0.82rem; }
+    .proj-table th, .proj-table td { padding: 0.6rem 0.75rem; }
+    .investment-breakdown { grid-template-columns: repeat(2, 1fr); }
+    .roadmap { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* Mobile (max 768px) */
   @media (max-width: 768px) {
-    .slide { padding: 6rem 1.5rem 3rem; }
-    .two-col, .brand-branches, .roadmap, .mercadito-tiers, .investment-breakdown, .provider-pitch { grid-template-columns: 1fr; }
-    .cards-2 { grid-template-columns: 1fr; }
-    .roadmap::before { display: none; }
-    nav { padding: 1rem 1.5rem; }
+    .slide { padding: 5.5rem 1.25rem 3rem; }
+
+    /* Typography scale-down */
+    h2.slide-title { font-size: clamp(1.6rem, 5.5vw, 2.2rem); margin-bottom: 1rem; }
+    h3.sub-title { font-size: clamp(1.1rem, 4vw, 1.5rem); }
+    .body-text { font-size: 0.95rem; }
+    .big-quote { font-size: clamp(1.2rem, 4.5vw, 1.6rem); padding-left: 1.25rem; }
+
+    /* Nav */
+    nav { padding: 0.75rem 1.25rem; }
     .nav-dots { display: none; }
+    .slide-counter { font-size: 0.7rem; }
+
+    /* All multi-column → single column */
+    .two-col,
+    .brand-branches,
+    .roadmap,
+    .mercadito-tiers,
+    .investment-breakdown,
+    .provider-pitch,
+    .provider-grid { grid-template-columns: 1fr; }
+
+    /* Cards */
+    .cards-grid.cards-2,
+    .cards-grid.cards-3 { grid-template-columns: 1fr; }
+
+    /* Pricing — stack all */
+    .pricing-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .pricing-card { padding: 1.5rem 1.25rem; }
+
+    /* Stats — 2 col on mobile */
+    .stats-row { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .stat-number { font-size: 1.8rem; }
+
+    /* Tables — horizontal scroll */
+    .proj-table { font-size: 0.75rem; display: block; overflow-x: auto; white-space: nowrap; }
+    .proj-table th, .proj-table td { padding: 0.5rem 0.6rem; }
+
+    /* Roadmap */
+    .roadmap::before { display: none; }
+    .roadmap-phase { padding-top: 1rem; text-align: left; }
+    .roadmap-dot { position: static; transform: none; display: inline-block; margin-bottom: 0.5rem; }
+
+    /* Brand tree */
+    .brand-branches::before { display: none; }
+    .branch-box::before { display: none; }
+
+    /* Flow steps */
+    .commission-flow { padding: 1.25rem; }
+
+    /* Cover */
+    .cover-products { gap: 0.5rem; }
+    .product-tag { font-size: 0.78rem; padding: 0.4rem 0.9rem; }
+    .leaf-deco { display: none; }
+
+    /* CTA buttons */
+    .cta-buttons { flex-direction: column; align-items: center; }
+    .btn-primary, .btn-secondary { width: 100%; max-width: 320px; text-align: center; }
+
+    /* Investment total */
+    .total-investment { flex-direction: column; gap: 1rem; text-align: center; }
+    .total-amount { font-size: 1.4rem; }
+
+    /* Scenario tabs */
+    .scenario-tabs { gap: 0.4rem; }
+    .scenario-tab { font-size: 0.8rem; padding: 0.4rem 0.9rem; }
+
+    /* Mercadito tiers → single col */
+    .mercadito-tiers { grid-template-columns: 1fr; }
+
+    /* Section divider */
+    .section-divider { padding: 2rem 1.25rem; }
+  }
+
+  /* Extra small (max 420px) */
+  @media (max-width: 420px) {
+    .slide { padding: 5rem 1rem 2.5rem; }
+    h2.slide-title { font-size: clamp(1.4rem, 6vw, 1.9rem); }
+    .stats-row { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+    .stat-number { font-size: 1.5rem; }
+    .stat-block { padding: 1rem 0.75rem; }
+    .card { padding: 1.25rem; }
+    .insight-box { padding: 1.25rem 1.25rem; font-size: 0.95rem; }
   }
 
   /* ANIMATIONS */
@@ -1061,7 +1154,7 @@
 
   <div class="cover-products">
     <span class="product-tag">🌱 Bloom — App</span>
-    <span class="product-tag">🛒 CultivIA Store</span>
+    <span class="product-tag">🛒 Todo para Cultivar</span>
     <span class="product-tag tierra">🏪 Mercadito CultivIA</span>
   </div>
 
@@ -1323,8 +1416,8 @@
         <div class="branch-desc">App principal. Guía de cultivo casero con IA, tracker siembra→cosecha, mentoría personalizada.</div>
       </div>
       <div class="branch-box">
-        <div class="branch-name">🛒 CultivIA Store</div>
-        <div class="branch-desc">Marketplace integrado. Insumos, semillas, herramientas a comisión de proveedores locales y nacionales.</div>
+        <div class="branch-name">🛒 Todo para Cultivar</div>
+        <div class="branch-desc">Guía de compras contextual. Directorio de proveedores locales + enlaces a marketplaces. Sin transacciones directas — CultivIA orienta, tú decides dónde comprar.</div>
       </div>
       <div class="branch-box" style="border-color:rgba(196,135,74,0.3);background:rgba(196,135,74,0.06);">
         <div class="branch-name" style="color:var(--tierra-claro);">🏪 Mercadito CultivIA</div>
@@ -1431,7 +1524,7 @@
     <div class="card">
       <span class="card-icon">🛒</span>
       <div class="card-title">Ecosistema conectado</div>
-      <div class="card-body">Bloom conecta con la CultivIA Store y el Mercadito. Una IA general solo responde — no hace nada por ti.</div>
+      <div class="card-body">Bloom conecta con <strong>Todo para Cultivar</strong> y el Mercadito. Una IA general solo responde — no hace nada por ti.</div>
     </div>
     <div class="card">
       <span class="card-icon">🔒</span>
@@ -1446,44 +1539,40 @@
   </div>
 </section>
 
-<!-- SLIDE 10: CULTIVIA STORE -->
+<!-- SLIDE 11: TODO PARA CULTIVAR -->
 <section class="slide slide-dark" id="slide-11">
   <div class="bg-grid"></div>
-  <div class="section-label">11 — CultivIA Store</div>
-  <h2 class="slide-title">El insumo correcto,<br>en el <span class="highlight">momento exacto.</span></h2>
+  <div class="section-label">11 — Todo para Cultivar</div>
+  <h2 class="slide-title">Lo que necesitas,<br><span class="highlight">cuando lo necesitas.</span></h2>
 
   <div class="two-col">
     <div>
       <div class="body-text" style="margin-bottom:2rem;">
-        CultivIA Store no es un catálogo genérico. Aparece <strong>dentro del flujo de cultivo</strong> — cuando Bloom detecta que el usuario necesita sustrato, semillas o herramientas específicas, la tienda aparece con la recomendación correcta.
+        <strong>Todo para Cultivar</strong> no es una tienda — es una guía de compras contextual. Bloom detecta en qué etapa está tu cultivo y recomienda los productos y proveedores correctos. Sin transacciones directas: CultivIA orienta, tú decides dónde y cómo comprar.
       </div>
 
       <div class="commission-flow">
-        <div style="font-family:'Playfair Display',serif;font-weight:700;margin-bottom:1rem;font-size:1rem;">Cómo funciona el modelo</div>
+        <div style="font-family:'Playfair Display',serif;font-weight:700;margin-bottom:1rem;font-size:1rem;">Tres capas de monetización</div>
         <div class="flow-step">
           <div class="flow-num">1</div>
-          <div class="flow-text">Bloom detecta que el usuario llega a la etapa de trasplante y necesita sustrato.</div>
+          <div class="flow-text"><strong>Directorio local (desde día 1):</strong> Proveedores de QRoo listados con contacto directo. El usuario presenta su app y obtiene 5% de descuento. CultivIA construye atribución sin tocar dinero.</div>
         </div>
         <div class="flow-step">
           <div class="flow-num">2</div>
-          <div class="flow-text">La app sugiere el producto correcto del catálogo de CultivIA Store.</div>
+          <div class="flow-text"><strong>Espacios promovidos (mes 6–12):</strong> Con 300–500 usuarios activos y datos reales de cupones, los proveedores pagan por visibilidad preferencial dentro de la sección. Fee mensual fijo por posición destacada.</div>
         </div>
         <div class="flow-step">
           <div class="flow-num">3</div>
-          <div class="flow-text">Usuario compra — ya sea con contacto directo al proveedor o en línea.</div>
-        </div>
-        <div class="flow-step">
-          <div class="flow-num">4</div>
-          <div class="flow-text">Ya que el proveedor haya aceptado integrarse y comiencen las ventas, CultivIA cobra comisión al proveedor: 8% (primeros 120 días) → 12% en adelante.</div>
+          <div class="flow-text"><strong>Afiliados digitales (mediano plazo):</strong> Enlaces a Mercado Libre y marketplaces para productos que los proveedores locales no cubren — germinadores, macetas, herramientas. Comisión 1–3% por conversión.</div>
         </div>
       </div>
     </div>
     <div>
       <div class="insight-box" style="margin-bottom:1.5rem;">
-        <strong>Sin inventario propio.</strong> Sin riesgo de stock. Sin logística. CultivIA conecta — el proveedor entrega.
+        <strong>Cero riesgo reputacional.</strong> CultivIA no toca inventario, no procesa pagos, no gestiona devoluciones. La reputación de la marca no depende de la operación de terceros.
       </div>
 
-      <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:rgba(126,184,41,0.6);letter-spacing:0.1em;margin-bottom:1rem;">PROVEEDORES ANCLA IDENTIFICADOS</div>
+      <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:rgba(126,184,41,0.6);letter-spacing:0.1em;margin-bottom:1rem;">PROVEEDORES ANCLA — QRoo</div>
       <div class="provider-grid">
         <div class="provider-item"><div class="provider-dot muy-alta"></div>Hidro Cultivos Del Mayab</div>
         <div class="provider-item"><div class="provider-dot muy-alta"></div>Hidroponía Maya (Gob. QRoo)</div>
@@ -1492,6 +1581,7 @@
         <div class="provider-item"><div class="provider-dot alta"></div>Fertiagricola de la Península</div>
         <div class="provider-item"><div class="provider-dot alta"></div>APEC Manejo de Agua</div>
       </div>
+      <div style="margin-top:1rem;font-family:'DM Mono',monospace;font-size:0.65rem;opacity:0.5;">→ Integración v1: directorio + cupón 5% · Monetización activa en Fase 2</div>
     </div>
   </div>
 </section>
@@ -1548,7 +1638,7 @@
         <li class="pricing-feature">Tracker siembra → cosecha</li>
         <li class="pricing-feature">Tips de mentoría IA por etapa</li>
         <li class="pricing-feature">Enciclopedia básica (25 cultivos)</li>
-        <li class="pricing-feature">Acceso a CultivIA Store</li>
+        <li class="pricing-feature">Acceso a Todo para Cultivar</li>
         <li class="pricing-feature">Acceso al Mercadito</li>
       </ul>
     </div>
@@ -1610,8 +1700,8 @@
     </div>
     <div class="card">
       <span class="card-icon">🛒</span>
-      <div class="card-title">Comisiones CultivIA Store</div>
-      <div class="card-body">8% por venta referida en primeros 120 días → 12% en adelante. Sin inventario, sin logística. El ingreso más escalable del modelo.</div>
+      <div class="card-title">Todo para Cultivar</div>
+      <div class="card-body">3 capas: (1) Directorio local + cupón 5% — construye atribución desde día 1. (2) Espacios promovidos a proveedores desde mes 6–12: fee fijo mensual. (3) Afiliados digitales (ML, marketplaces): 1–3% por conversión, sin inventario ni riesgo.</div>
     </div>
     <div class="card">
       <span class="card-icon">🏪</span>
@@ -1654,7 +1744,7 @@
       <ul class="roadmap-items">
         <li>Pop-up piloto primer evento</li>
         <li>Meta: 200–500 usuarios activos</li>
-        <li>Activación CultivIA Store</li>
+        <li>Activación Todo para Cultivar</li>
         <li>Campaña redes sociales</li>
         <li>Evaluación espacio semifijo</li>
       </ul>
@@ -1753,68 +1843,53 @@
 
   <div class="scenario-content active" id="sc-conservador">
     <table class="proj-table">
-      <thead>
-        <tr>
-          <th>Concepto</th>
-          <th>Año 1</th>
-          <th>Año 2</th>
-          <th>Año 3</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Concepto</th><th>Año 1</th><th>Año 2</th><th>Año 3</th></tr></thead>
       <tbody>
         <tr><td>Usuarios activos</td><td>900</td><td>2,700</td><td>6,300</td></tr>
         <tr><td>Usuarios premium (8%→12%→18%)</td><td>72</td><td>324</td><td>1,134</td></tr>
         <tr><td>Ingresos suscripciones</td><td>$64,800 MXN</td><td>$291,600 MXN</td><td>$1,058,760 MXN</td></tr>
-        <tr><td>Ingresos comisión Store</td><td>$45,360 MXN</td><td>$204,120 MXN</td><td>$680,400 MXN</td></tr>
+        <tr><td>Todo para Cultivar — espacios promovidos</td><td>$0 MXN</td><td>$54,000 MXN</td><td>$108,000 MXN</td></tr>
+        <tr><td>Todo para Cultivar — afiliados digitales</td><td>$0 MXN</td><td>$18,000 MXN</td><td>$54,000 MXN</td></tr>
         <tr><td>Ingresos Mercadito</td><td>$28,800 MXN</td><td>$57,600 MXN</td><td>$115,200 MXN</td></tr>
-        <tr class="total-row"><td>TOTAL ANUAL</td><td>$139,000 MXN</td><td>$553,320 MXN</td><td>$1,854,360 MXN</td></tr>
-        <tr class="total-row"><td>TOTAL USD (~20:1)</td><td>~$6,900 USD</td><td>~$27,600 USD</td><td>~$92,700 USD</td></tr>
+        <tr class="total-row"><td>TOTAL ANUAL</td><td>$93,600 MXN</td><td>$421,200 MXN</td><td>$1,335,960 MXN</td></tr>
+        <tr class="total-row"><td>TOTAL USD (~20:1)</td><td>~$4,680 USD</td><td>~$21,060 USD</td><td>~$66,800 USD</td></tr>
       </tbody>
     </table>
+    <div style="font-family:'DM Mono',monospace;font-size:0.65rem;opacity:0.45;margin-top:0.75rem;">→ Año 1 sin ingresos de proveedores: modelo de directorio construye atribución. Todo para Cultivar activa monetización en Año 2 con tracción demostrada.</div>
   </div>
 
   <div class="scenario-content" id="sc-base">
     <table class="proj-table">
-      <thead>
-        <tr>
-          <th>Concepto</th>
-          <th>Año 1</th>
-          <th>Año 2</th>
-          <th>Año 3</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Concepto</th><th>Año 1</th><th>Año 2</th><th>Año 3</th></tr></thead>
       <tbody>
         <tr><td>Usuarios activos</td><td>1,400</td><td>4,200</td><td>9,800</td></tr>
         <tr><td>Usuarios premium</td><td>140</td><td>588</td><td>1,960</td></tr>
         <tr><td>Ingresos suscripciones</td><td>$126,000 MXN</td><td>$529,200 MXN</td><td>$1,764,000 MXN</td></tr>
-        <tr><td>Ingresos comisión Store</td><td>$70,560 MXN</td><td>$317,520 MXN</td><td>$1,058,400 MXN</td></tr>
+        <tr><td>Todo para Cultivar — espacios promovidos</td><td>$18,000 MXN</td><td>$108,000 MXN</td><td>$216,000 MXN</td></tr>
+        <tr><td>Todo para Cultivar — afiliados digitales</td><td>$9,000 MXN</td><td>$36,000 MXN</td><td>$90,000 MXN</td></tr>
         <tr><td>Ingresos Mercadito</td><td>$57,600 MXN</td><td>$115,200 MXN</td><td>$230,400 MXN</td></tr>
-        <tr class="total-row"><td>TOTAL ANUAL</td><td>$254,160 MXN</td><td>$961,920 MXN</td><td>$3,052,800 MXN</td></tr>
-        <tr class="total-row"><td>TOTAL USD (~20:1)</td><td>~$12,700 USD</td><td>~$48,100 USD</td><td>~$152,600 USD</td></tr>
+        <tr class="total-row"><td>TOTAL ANUAL</td><td>$210,600 MXN</td><td>$788,400 MXN</td><td>$2,300,400 MXN</td></tr>
+        <tr class="total-row"><td>TOTAL USD (~20:1)</td><td>~$10,530 USD</td><td>~$39,420 USD</td><td>~$115,020 USD</td></tr>
       </tbody>
     </table>
+    <div style="font-family:'DM Mono',monospace;font-size:0.65rem;opacity:0.45;margin-top:0.75rem;">→ Espacios promovidos: 3 proveedores × $1,000 MXN/mes en Año 2 · 6 × $1,500 en Año 3. Afiliados: ~300–600 clicks/mes a ML, ticket promedio $400 MXN.</div>
   </div>
 
   <div class="scenario-content" id="sc-optimista">
     <table class="proj-table">
-      <thead>
-        <tr>
-          <th>Concepto</th>
-          <th>Año 1</th>
-          <th>Año 2</th>
-          <th>Año 3</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Concepto</th><th>Año 1</th><th>Año 2</th><th>Año 3</th></tr></thead>
       <tbody>
         <tr><td>Usuarios activos</td><td>2,500</td><td>7,500</td><td>18,000</td></tr>
         <tr><td>Usuarios premium</td><td>300</td><td>1,125</td><td>3,600</td></tr>
         <tr><td>Ingresos suscripciones</td><td>$270,000 MXN</td><td>$1,012,500 MXN</td><td>$3,240,000 MXN</td></tr>
-        <tr><td>Ingresos comisión Store</td><td>$126,000 MXN</td><td>$567,000 MXN</td><td>$1,944,000 MXN</td></tr>
+        <tr><td>Todo para Cultivar — espacios promovidos</td><td>$54,000 MXN</td><td>$216,000 MXN</td><td>$432,000 MXN</td></tr>
+        <tr><td>Todo para Cultivar — afiliados digitales</td><td>$18,000 MXN</td><td>$72,000 MXN</td><td>$216,000 MXN</td></tr>
         <tr><td>Ingresos Mercadito</td><td>$86,400 MXN</td><td>$172,800 MXN</td><td>$432,000 MXN</td></tr>
-        <tr class="total-row"><td>TOTAL ANUAL</td><td>$482,400 MXN</td><td>$1,752,300 MXN</td><td>$5,616,000 MXN</td></tr>
-        <tr class="total-row"><td>TOTAL USD (~20:1)</td><td>~$24,100 USD</td><td>~$87,600 USD</td><td>~$280,800 USD</td></tr>
+        <tr class="total-row"><td>TOTAL ANUAL</td><td>$428,400 MXN</td><td>$1,473,300 MXN</td><td>$4,320,000 MXN</td></tr>
+        <tr class="total-row"><td>TOTAL USD (~20:1)</td><td>~$21,420 USD</td><td>~$73,665 USD</td><td>~$216,000 USD</td></tr>
       </tbody>
     </table>
+    <div style="font-family:'DM Mono',monospace;font-size:0.65rem;opacity:0.45;margin-top:0.75rem;">→ Espacios promovidos: 6 proveedores × $1,500/mes en Año 2 · 12 × $1,500 en Año 3. Afiliados incluyen Amazon MX una vez reabra su programa.</div>
   </div>
 </section>
 
@@ -1828,31 +1903,31 @@
 <!-- SLIDE 15: POR QUÉ SER PROVEEDOR -->
 <section class="slide slide-light" id="slide-18">
   <div class="section-label dark">18 — Para el Proveedor</div>
-  <h2 class="slide-title" style="color:var(--texto-oscuro);">Tus productos,<br>donde el cliente <span style="color:var(--verde-lima);">ya los necesita.</span></h2>
+  <h2 class="slide-title" style="color:var(--texto-oscuro);">Tu negocio,<br>donde el cliente <span style="color:var(--verde-lima);">ya te busca.</span></h2>
 
   <div class="two-col">
     <div>
       <ul class="bullet-list dark">
-        <li><strong>Cero costo de entrada.</strong> No hay cuota de membresía, ni fee fijo. Solo pagas cuando vendemos juntos — modelo de comisión pura.</li>
-        <li><strong>El cliente llega listo para comprar.</strong> Bloom lo guía hasta el momento exacto en que necesita tu producto — no hay que convencerlo, ya está motivado.</li>
-        <li><strong>Tu marca visible dentro de la app.</strong> Logo, descripción y catálogo de tu negocio frente a miles de usuarios activos en la Riviera Maya.</li>
-        <li><strong>Acceso a un mercado que crece contigo.</strong> Cada nuevo usuario de Bloom es un cliente potencial tuyo. Cuanto más crece CultivIA, más vendes tú.</li>
-        <li><strong>Reporte mensual de ventas referidas.</strong> Transparencia total: sabes exactamente cuántas ventas llegaron desde la app.</li>
+        <li><strong>Sin costo de entrada.</strong> En Fase 1 no hay cuota ni comisión — tu negocio aparece en el directorio de Bloom y empiezas a recibir clientes referidos sin pagar nada.</li>
+        <li><strong>El cliente llega listo.</strong> Bloom lo guía hasta el momento exacto en que necesita tu producto. No hay que convencerlo — ya sabe lo que busca.</li>
+        <li><strong>Tu contacto directo en la app.</strong> WhatsApp, teléfono o sitio web — el cliente te contacta a ti, la transacción es 100% tuya.</li>
+        <li><strong>Cupón del 5% como carta de presentación.</strong> El usuario presenta la app en tu tienda y obtiene su descuento. Tú sabes exactamente cuántos clientes llegaron por CultivIA.</li>
+        <li><strong>Visibilidad promovida cuando haya tracción.</strong> A partir del mes 6–12, ofrecemos posiciones destacadas dentro de la sección a un fee mensual fijo — sin riesgo ni sorpresas.</li>
       </ul>
     </div>
     <div>
       <div class="insight-box tierra" style="color:var(--texto-oscuro);">
         <strong>La propuesta más simple del mundo:</strong><br><br>
-        Nosotros traemos al cliente con la necesidad ya creada. Tú das el producto. Compartimos el resultado. Sin riesgo, sin inversión, sin complicaciones.
+        Nosotros traemos al cliente con la necesidad ya creada. Tú atiendes y vendes directamente. Sin intermediarios en la transacción, sin comisiones en Fase 1, sin riesgo.
       </div>
       <div class="stats-row" style="margin-top:1.5rem;">
         <div class="stat-block" style="background:rgba(45,92,63,0.08);border-color:rgba(45,92,63,0.2);">
-          <div class="stat-number" style="color:var(--verde-medio);">8%</div>
-          <div class="stat-label" style="color:var(--texto-oscuro);">Comisión primeros 120 días</div>
+          <div class="stat-number" style="color:var(--verde-medio);">5%</div>
+          <div class="stat-label" style="color:var(--texto-oscuro);">Cupón de descuento para usuarios — atribución medible desde día 1</div>
         </div>
         <div class="stat-block" style="background:rgba(45,92,63,0.08);border-color:rgba(45,92,63,0.2);">
-          <div class="stat-number" style="color:var(--verde-medio);">12%</div>
-          <div class="stat-label" style="color:var(--texto-oscuro);">Comisión a partir del día 121</div>
+          <div class="stat-number" style="color:var(--verde-medio);">$0</div>
+          <div class="stat-label" style="color:var(--texto-oscuro);">Costo para el proveedor en Fase 1 — modelo de riesgo cero</div>
         </div>
       </div>
     </div>
@@ -1863,43 +1938,39 @@
 <section class="slide slide-dark" id="slide-19">
   <div class="bg-grid"></div>
   <div class="section-label">19 — Integración para Proveedores</div>
-  <h2 class="slide-title">Simple de integrar.<br><span class="highlight">Poderoso en resultados.</span></h2>
+  <h2 class="slide-title">Tres pasos.<br><span class="highlight">Empieza hoy.</span></h2>
 
   <div class="two-col">
     <div class="commission-flow">
-      <div style="font-family:'Playfair Display',serif;font-weight:700;margin-bottom:1.5rem;font-size:1.1rem;">El flujo completo</div>
+      <div style="font-family:'Playfair Display',serif;font-weight:700;margin-bottom:1.5rem;font-size:1.1rem;">Cómo integrarte al directorio</div>
       <div class="flow-step">
         <div class="flow-num">1</div>
-        <div class="flow-text"><strong>Tú nos envías tu catálogo</strong> — nombre, foto, precio y descripción de tus productos. Nosotros lo subimos a CultivIA Store.</div>
+        <div class="flow-text"><strong>Nos compartes tu información:</strong> nombre del negocio, categoría de productos, dirección, canal de contacto preferido (WhatsApp, tel, web) y horarios.</div>
       </div>
       <div class="flow-step">
         <div class="flow-num">2</div>
-        <div class="flow-text"><strong>Bloom hace el trabajo:</strong> detecta qué necesita cada usuario en cada etapa de cultivo y recomienda tu producto en el momento correcto.</div>
+        <div class="flow-text"><strong>Te listamos en "Todo para Cultivar":</strong> tu negocio aparece en la sección de Bloom cuando un usuario necesita lo que tú ofreces — sustrato, macetas, riego, semillas.</div>
       </div>
       <div class="flow-step">
         <div class="flow-num">3</div>
-        <div class="flow-text"><strong>El cliente contacta o compra</strong> directamente — por WhatsApp, teléfono o tienda en línea según prefieras operar.</div>
+        <div class="flow-text"><strong>El usuario llega con su app:</strong> muestra el cupón del 5% en tu tienda, tú lo aplicas, nosotros registramos la atribución. Cada cupón redimido construye el caso de negocio.</div>
       </div>
       <div class="flow-step">
         <div class="flow-num">4</div>
-        <div class="flow-text"><strong>Reportes mensuales claros:</strong> cuántas referencias, cuántas ventas cerradas, comisión a pagar. Sin sorpresas.</div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-num">5</div>
-        <div class="flow-text"><strong>Comisión acordada:</strong> 8% los primeros 120 días como período de prueba, 12% en adelante una vez comprobada la tracción.</div>
+        <div class="flow-text"><strong>A partir del mes 6–12:</strong> con datos reales de referencias en mano, te presentamos la opción de posición destacada dentro de la app a un fee mensual fijo. Tú decides si los números te convencen.</div>
       </div>
     </div>
     <div>
       <div class="insight-box" style="margin-bottom:2rem;">
-        <strong>Piloto de 120 días sin compromiso.</strong><br><br>
-        Propuesta para arrancar: 4 meses de prueba con comisión reducida. Si los números no convencen, cada quien sigue su camino sin costo.
+        <strong>Piloto sin compromiso.</strong><br><br>
+        Fase 1 es gratuita para el proveedor. Si después de 6 meses los clientes referidos no convencen, cada quien sigue su camino sin costo ni contrato.
       </div>
       <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Lo que necesitamos de ti</div>
       <ul class="bullet-list">
-        <li>Catálogo de productos con fotos y precios</li>
+        <li>Nombre, dirección y categoría de productos</li>
         <li>Canal de contacto preferido (WhatsApp, web, teléfono)</li>
-        <li>Cobertura de entrega o pickup en Cancún/Riviera Maya</li>
-        <li>Tiempo de respuesta acordado al cliente referido</li>
+        <li>Cobertura de atención en Cancún / Riviera Maya</li>
+        <li>Disposición a respetar el cupón del 5% a usuarios Bloom</li>
       </ul>
     </div>
   </div>
@@ -2022,45 +2093,52 @@
 </section>
 
 <script>
+  // Make all slides visible immediately as fallback (prevents opacity:0 blank state)
+  // The observer then adds the smooth entrance animation progressively
+  document.querySelectorAll('.slide').forEach(s => s.classList.add('visible'));
+
   // SLIDE TRACKING & NAV
   const slides = document.querySelectorAll('.slide');
   const navDots = document.getElementById('navDots');
   const slideCounter = document.getElementById('slideCounter');
   const totalSlides = slides.length;
 
-  // Create dots
+  // Create nav dots
   slides.forEach((_, i) => {
     const dot = document.createElement('button');
     dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', `Ir al slide ${i + 1}`);
+    dot.setAttribute('aria-label', 'Ir al slide ' + (i + 1));
     dot.onclick = () => slides[i].scrollIntoView({ behavior: 'smooth' });
     navDots.appendChild(dot);
   });
 
-  // Intersection Observer
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        const idx = Array.from(slides).indexOf(entry.target);
-        document.querySelectorAll('.nav-dot').forEach((d, i) => {
-          d.classList.toggle('active', i === idx);
-        });
-        slideCounter.textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(totalSlides).padStart(2, '0');
-      }
-    });
-  }, { threshold: 0.15 });
+  // Intersection Observer — tracks active slide for nav dots + counter
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const idx = Array.from(slides).indexOf(entry.target);
+          document.querySelectorAll('.nav-dot').forEach((d, i) => {
+            d.classList.toggle('active', i === idx);
+          });
+          slideCounter.textContent =
+            String(idx + 1).padStart(2, '0') + ' / ' + String(totalSlides).padStart(2, '0');
+        }
+      });
+    }, { threshold: 0.15 });
 
-  slides.forEach(s => observer.observe(s));
+    slides.forEach(s => observer.observe(s));
+  }
 
   // SCENARIO TABS
   function showScenario(name, btn) {
     document.querySelectorAll('.scenario-content').forEach(el => el.classList.remove('active'));
     document.querySelectorAll('.scenario-tab').forEach(el => el.classList.remove('active'));
-    document.getElementById('sc-' + name).classList.add('active');
-    btn.classList.add('active');
+    var content = document.getElementById('sc-' + name);
+    if (content) content.classList.add('active');
+    if (btn) btn.classList.add('active');
   }
 </script>
-
 </body>
 </html>
